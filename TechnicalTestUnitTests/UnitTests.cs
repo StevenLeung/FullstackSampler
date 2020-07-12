@@ -6,12 +6,12 @@ namespace TechnicalTestUnitTests
     [TestFixture]
     public class Tests
     {
-        private SubTextMatcher _sut;
+        private SubtextMatchFinder _sut;
 
         [SetUp]
         public void Setup()
         {
-            _sut = new SubTextMatcher();
+            _sut = new SubtextMatchFinder();
         }
 
         [Test]
@@ -23,7 +23,7 @@ namespace TechnicalTestUnitTests
             const string expected = "0";
 
             //Act
-            var characterPositions = _sut.GetCharacterPositions(text, subtext);
+            var characterPositions = _sut.FindMatches(text, subtext);
 
             //Assert
             Assert.AreEqual(expected, characterPositions.StringForDisplay);
@@ -38,7 +38,7 @@ namespace TechnicalTestUnitTests
             const string expected = "0";
 
             //Act
-            var characterPositions = _sut.GetCharacterPositions(text, subtext);
+            var characterPositions = _sut.FindMatches(text, subtext);
 
             //Assert
             Assert.AreEqual(expected, characterPositions.StringForDisplay);
@@ -53,7 +53,22 @@ namespace TechnicalTestUnitTests
             const string expected = "0,8";
 
             //Act
-            var characterPositions = _sut.GetCharacterPositions(text, subtext);
+            var characterPositions = _sut.FindMatches(text, subtext);
+
+            //Assert
+            Assert.AreEqual(expected, characterPositions.StringForDisplay);
+        }
+
+        [Test]
+        public void AllowSubtextWithSpaces()
+        {
+            //Arrange
+            var text = "Test tester testing";
+            var subtext = " test ";
+            const string expected = "0,5,12";
+
+            //Act
+            var characterPositions = _sut.FindMatches(text, subtext);
 
             //Assert
             Assert.AreEqual(expected, characterPositions.StringForDisplay);
@@ -67,7 +82,7 @@ namespace TechnicalTestUnitTests
             var subtext = "testing";
             
             //Act
-            var characterPositions = _sut.GetCharacterPositions(text, subtext);
+            var characterPositions = _sut.FindMatches(text, subtext);
 
             //Assert
             Assert.AreEqual(string.Empty, characterPositions.StringForDisplay);

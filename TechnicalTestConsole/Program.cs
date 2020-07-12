@@ -13,8 +13,8 @@ namespace TechnicalTestConsole
             Console.WriteLine("Subtext:");
             var subtextValue = Console.ReadLine();
 
-            var subTextMatcher = new SubTextMatcher();
-            var subtextMatchResults = subTextMatcher.GetCharacterPositions(textValue,subtextValue);
+            var subTextMatcher = new SubtextMatchFinder();
+            var subtextMatchResults = subTextMatcher.FindMatches(textValue,subtextValue);
 
             if (subtextMatchResults.DoesContainMatches)
                 Console.WriteLine("Matches found at {0}", subtextMatchResults.StringForDisplay);

@@ -2,15 +2,17 @@
 
 namespace TechnicalTestShared
 {
-    public interface ICharacterPositionCollection
+    public interface ISubtextMatchResults
     {
         bool DoesContainMatches { get; }
         string StringForDisplay { get; }
 
         void AddFoundPosition(int position);
+
+        List<int> FoundCharacterPositions { get; }
     }
 
-    public class CharacterPositionCollection : ICharacterPositionCollection
+    public class SubtextMatchResults : ISubtextMatchResults
     {
         private const string delimiterCharacter = ",";
         private readonly List<int> _characterPositions;
@@ -25,7 +27,9 @@ namespace TechnicalTestShared
             get { return string.Join(delimiterCharacter, _characterPositions); }
         }
 
-        public CharacterPositionCollection()
+        public List<int> FoundCharacterPositions => _characterPositions;
+
+        public SubtextMatchResults()
         {
             _characterPositions = new List<int>();
         }
