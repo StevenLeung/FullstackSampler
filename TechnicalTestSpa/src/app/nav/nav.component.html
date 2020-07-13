@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/home']">Portfolio</a>
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/demo']">Demo</a>
+            </li>
+        </ul>
+
+        <div class="dropdown" dropdown>
+            <a class="dropdown-toggle text-light" dropdownToggle>
+                My Details
+            </a>
+
+            <div class="dropdown-menu mt-3 dropdown-menu-right" *dropdownMenu>
+                <a class="dropdown-item" href="{{certificationsUrl}}" target="_blank"><i class="fa fa-certificate mr-1"></i>My Certifications</a>
+                <a class="dropdown-item" href="{{linkedInUrl}}" target="_blank"><i class="fa fa-linkedin-square mr-1"></i>My Linked In</a>
+            </div>
+        </div>
+
+    </div>
+</nav>

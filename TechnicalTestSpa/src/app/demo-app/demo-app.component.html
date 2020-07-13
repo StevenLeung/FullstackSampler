@@ -1,0 +1,64 @@
+<div class="container mt-5">
+
+    <h2 class="text-center text-primary">Subtext Matcher</h2>
+
+    <p>Solution meets all of the following requirements:</p>
+
+    <ul>
+        <li>Has a GUI that communicates with REST API.</li>
+        <li>
+            Accepts two strings as input: one string is called "text" and the other is called "subtext" in this problem statement.
+        </li>
+        <li>
+            Matches the subtext against the text, outputting the character positions of the beginning of each match for the subtext within the text.
+        </li>
+        <li>
+            Allows multiple matches.
+        </li>
+        <li>
+            Allows case insensitive matching.
+        </li>
+        <li>
+            Validates user input and prevents sad-path scenarios.
+        </li>
+    </ul>
+
+    <hr>
+
+    <div *ngIf="wasAttempted === true && indexes?.length === 0" class="alert alert-info" role="alert">
+        No matches were found!
+    </div>
+
+    <div *ngIf="wasAttempted === true && indexes?.length > 0" class="alert alert-success" role="alert">
+        Subtext "{{model.subtext}}" was found within "{{model.text}}":
+        <ul>
+            <li *ngFor="let index of indexes">At character {{index + 1}}</li>
+        </ul>
+    </div>
+
+    <form *ngIf="!wasAttempted" [formGroup]="matchesForm" id="matchesForm" (ngSubmit)="submit()">
+        <p>Example: Search for subtext "abra" within text "abra ka dabra" will result with two matches found.</p>
+        <div class="form-group">
+            <label for="subtext">Search for</label>
+            <input [ngClass]="{'is-invalid': matchesForm.get('subtext').errors && matchesForm.get('subtext').touched || matchesForm.get('subtext').touched &&  matchesForm.hasError('smaller')}"
+                   class="form-control" placeholder="subtext" formControlName="subtext">
+            <div class="invalid-feedback" *ngIf="matchesForm.get('subtext').touched && matchesForm.get('subtext').hasError('required')">Subtext is required</div>
+        </div>
+
+        <div class="form-group">
+            <label for="text">within</label>
+            <input [ngClass]="{'is-invalid': matchesForm.get('text').errors && matchesForm.get('text').touched || matchesForm.get('text').touched &&  matchesForm.hasError('smaller')}"
+                   class="form-control" placeholder="text" formControlName="text">
+            <div class="invalid-feedback" *ngIf="matchesForm.get('text').touched && matchesForm.get('text').hasError('required')">Text is required</div>
+            <div class="invalid-feedback" *ngIf="matchesForm.hasError('smaller') && matchesForm.get('text').touched">Text must be larger then subtext</div>
+        </div>
+    </form>
+
+    <div class="form-group text-center">
+        <button *ngIf="!wasAttempted" [disabled]="!matchesForm.valid" form="matchesForm" class="btn btn-success mr-2" type="submit">Give it a try</button>
+        <button *ngIf="wasAttempted" class="btn btn-primary mr-2" type="button" (click)="tryAgain()">Try Again!</button>
+        <button class="btn btn-outline-secondary" type="button" [routerLink]="['/home']">Go to Welcome Page</button>
+    </div>
+
+</div>
+
