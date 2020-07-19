@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalTestShared", "Tech
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalTestUnitTests", "TechnicalTestUnitTests\TechnicalTestUnitTests.csproj", "{218880F7-BA91-47E3-BB6E-B9B4551561A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalTestApi", "TechnicalTestApi\TechnicalTestApi.csproj", "{33A922A2-0015-4A5D-B852-313DDEC377A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,5 +27,9 @@ Global
 		{218880F7-BA91-47E3-BB6E-B9B4551561A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{218880F7-BA91-47E3-BB6E-B9B4551561A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{218880F7-BA91-47E3-BB6E-B9B4551561A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33A922A2-0015-4A5D-B852-313DDEC377A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33A922A2-0015-4A5D-B852-313DDEC377A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33A922A2-0015-4A5D-B852-313DDEC377A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33A922A2-0015-4A5D-B852-313DDEC377A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
